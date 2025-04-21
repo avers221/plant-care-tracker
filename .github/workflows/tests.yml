@@ -18,36 +18,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.4
-          tools: composer:v2
-          coverage: xdebug
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install Node Dependencies
-        run: npm ci
-
-      - name: Install Dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
-
       - name: Copy Environment File
         run: cp .env.example .env
 
+      - name: Set up Docker Compose
+        run: docker-compose up -d --build
+
+      - name: Install Dependencies
+        run: |
+          docker-compose exec -T composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Install Node Dependencies
+        run: docker-compose exec -T npm ci
+
       - name: Generate Application Key
-        run: php artisan key:generate
+        run: docker-compose exec -T php artisan key:generate
 
       - name: Publish Ziggy Configuration
-        run: php artisan ziggy:generate
+        run: docker-compose exec -T php artisan ziggy:generate
 
       - name: Build Assets
-        run: npm run build
+        run: docker-compose exec -T npm run build
 
       - name: Tests
-        run: ./vendor/bin/phpunit
+        run: docker-compose exec -T ./vendor/bin/phpunit
