@@ -26,19 +26,19 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          docker compose exec -T php composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          docker compose exec -T laravel composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
       - name: Install Node Dependencies
-        run: docker compose exec -T php npm ci
+        run: docker compose exec -T laravel npm ci
 
       - name: Generate Application Key
-        run: docker compose exec -T php php artisan key:generate
+        run: docker compose exec -T laravel php artisan key:generate
 
       - name: Publish Ziggy Configuration
-        run: docker compose exec -T php php artisan ziggy:generate
+        run: docker compose exec -T laravel php artisan ziggy:generate
 
       - name: Build Assets
-        run: docker compose exec -T php npm run build
+        run: docker compose exec -T laravel npm run build
 
       - name: Tests
-        run: docker compose exec -T php ./vendor/bin/phpunit
+        run: docker compose exec -T laravel ./vendor/bin/phpunit

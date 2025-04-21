@@ -42,6 +42,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | b
     . "$NVM_DIR/nvm.sh" && \
     nvm install 22 && \
     nvm use 22 && \
-    nvm alias default 22
+    nvm alias default 22 && \
+    echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc && \
+        echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc && \
+        echo 'export PATH="$NVM_DIR/versions/node/$(nvm version)/bin:$PATH"' >> ~/.bashrc && \
+        ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" /usr/local/bin/node && \
+        ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" /usr/local/bin/npm
 
 CMD ["/usr/bin/supervisord"]
