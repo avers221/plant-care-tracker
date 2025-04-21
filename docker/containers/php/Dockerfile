@@ -3,10 +3,6 @@ FROM php:8.4-fpm
 ENV TIMEZONE=Europe/Moscow
 ENV TZ=$TIMEZONE
 
-ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.12/supercronic-linux-arm64 \
-    SUPERCRONIC=supercronic-linux-arm64 \
-    SUPERCRONIC_SHA1SUM=8baba3dd0b0b13552aca179f6ef10d55e5dee28b
-
 RUN apt-get update && apt-get install -y tzdata && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
@@ -29,7 +25,7 @@ RUN  docker-php-ext-install pdo \
     && docker-php-ext-install gd \
     && docker-php-ext-install curl \
     && docker-php-ext-install zip \
-    && docker-php-ext-install opcache 
+    && docker-php-ext-install opcache
 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -38,9 +34,6 @@ RUN pecl channel-update pecl.php.net
 RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
-
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
 
 WORKDIR /var/www/html
 

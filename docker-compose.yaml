@@ -33,7 +33,6 @@ services:
     volumes:
       - ./:/var/www/html/
       - ./supervisord.conf:/etc/supervisor/conf.d/supervisord.conf
-      - ./docker/containers/php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     depends_on:
       - redis
       - database
@@ -42,7 +41,7 @@ services:
   redis:
     container_name: ${APP_NAME}-redis
     image: redis:alpine
-    command: redis-server        
+    command: redis-server
     volumes:
       - ./docker/volumes/redis:/data'
     ports:
