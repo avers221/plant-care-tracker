@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Profile\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Core\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
