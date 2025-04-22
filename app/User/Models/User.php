@@ -3,6 +3,7 @@
 namespace App\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Plant\Models\Plant;
 use App\User\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,5 +51,10 @@ class User extends Authenticatable
     protected static function newFactory()
     {
         return UserFactory::new();
+    }
+
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Plant::class, 'user_id');
     }
 }
