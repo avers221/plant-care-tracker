@@ -3,6 +3,14 @@
 namespace Database\Seeders;
 
 use App\User\Models\User;
+use Database\Seeders\PlantsRequirements\Directories\ApplicationMethodSeeder;
+use Database\Seeders\PlantsRequirements\Directories\FertilizerTypeSeeder;
+use Database\Seeders\PlantsRequirements\Directories\LightTypeSeeder;
+use Database\Seeders\PlantsRequirements\Directories\PlacementsSeeder;
+use Database\Seeders\PlantsRequirements\Directories\RepottingFrequencySeeder;
+use Database\Seeders\PlantsRequirements\Directories\SpecialRepottingRequirementsSeeder;
+use Database\Seeders\PlantsRequirements\Directories\WateringMethodsSeeder;
+use Database\Seeders\PlantsRequirements\Directories\WhenToPruneSeeder;
 use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,11 +22,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            PlantTypeSeeder::class,
+            ApplicationMethodSeeder::class,
+            FertilizerTypeSeeder::class,
+            LightTypeSeeder::class,
+            PlacementsSeeder::class,
+            RepottingFrequencySeeder::class,
+            SpecialRepottingRequirementsSeeder::class,
+            WateringMethodsSeeder::class,
+            WhenToPruneSeeder::class,
         ]);
     }
 }

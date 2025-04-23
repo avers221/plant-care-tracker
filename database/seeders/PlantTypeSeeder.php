@@ -12,7 +12,17 @@ class PlantTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = [
+        foreach ($this->getTypes() as $type) {
+            PlantType::updateOrCreate(
+                ['name' => $type['name']],
+                $type
+            );
+        }
+    }
+
+    protected function getTypes()
+    {
+        return [
             ['name' => 'Суккуленты и кактусы', 'description' => 'Минимум полива, любят солнце, легко в уходе'],
             ['name' => 'Лиственные комнатные', 'description' => 'Фикусы, монстеры, замиокулькасы и т.п. Нуждаются в регулярном поливе и влажности'],
             ['name' => 'Цветущие комнатные', 'description' => 'Орхидеи, антуриумы, герани. Требуют особого режима освещения и удобрений'],
@@ -22,12 +32,5 @@ class PlantTypeSeeder extends Seeder
             ['name' => 'Гидропонные или полугидропонные', 'description' => 'Растения, растущие в воде или в системе с автополивом'],
             ['name' => 'Уличные (летники, многолетники)', 'description' => 'Подвержены сезонности, зимовке, пересадке'],
         ];
-
-        foreach ($types as $type) {
-            PlantType::updateOrCreate(
-                ['name' => $type['name']],
-                $type
-            );
-        }
     }
 }
