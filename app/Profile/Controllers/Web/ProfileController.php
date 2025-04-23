@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Profile\Controllers;
+namespace App\Profile\Controllers\Web;
 
 use App\Core\Controllers\Controller;
+use App\Plant\Models\PlantType;
 use App\Profile\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -13,6 +14,11 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
+    public function index(): Response
+    {
+        $plants = PlantType::all();
+        return Inertia::render('profile/index', compact('plants'));
+    }
     /**
      * Show the user's profile settings page.
      */
