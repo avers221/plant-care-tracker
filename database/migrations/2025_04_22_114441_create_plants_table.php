@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('type_id')->constrained('plant_types')->nullOnDelete()->cascadeOnUpdate();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamp('planted_at');
             $table->timestamps();
         });
