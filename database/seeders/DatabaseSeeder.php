@@ -2,18 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\User\Models\User;
-use Database\Seeders\PlantsRequirements\Directories\ApplicationMethodSeeder;
-use Database\Seeders\PlantsRequirements\Directories\FertilizerTypeSeeder;
-use Database\Seeders\PlantsRequirements\Directories\LightTypeSeeder;
-use Database\Seeders\PlantsRequirements\Directories\PlacementsSeeder;
-use Database\Seeders\PlantsRequirements\Directories\RepottingFrequencySeeder;
-use Database\Seeders\PlantsRequirements\Directories\SpecialRepottingRequirementsSeeder;
-use Database\Seeders\PlantsRequirements\Directories\WateringMethodsSeeder;
-use Database\Seeders\PlantsRequirements\Directories\WhenToPruneSeeder;
+use App\Plant\Seeders\PlantTypeSeeder;
+use App\PlantsRequirements\Seeders\Directories\ApplicationMethodSeeder;
+use App\PlantsRequirements\Seeders\Directories\FertilizerTypeSeeder;
+use App\PlantsRequirements\Seeders\Directories\LightTypeSeeder;
+use App\PlantsRequirements\Seeders\Directories\PlacementsSeeder;
+use App\PlantsRequirements\Seeders\Directories\RepottingFrequencySeeder;
+use App\PlantsRequirements\Seeders\Directories\SpecialRepottingRequirementsSeeder;
+use App\PlantsRequirements\Seeders\Directories\WateringMethodsSeeder;
+use App\PlantsRequirements\Seeders\Directories\WhenToPruneSeeder;
 use Illuminate\Database\Seeder;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {

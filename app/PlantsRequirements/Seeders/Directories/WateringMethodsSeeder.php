@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\PlantsRequirements\Directories;
+namespace App\PlantsRequirements\Seeders\Directories;
 
 use App\PlantsRequirements\Models\Directories\WateringMethod;
 use Illuminate\Database\Seeder;

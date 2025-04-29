@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Plant\Seeders;
 
 use App\Plant\Models\PlantType;
 use Illuminate\Database\Seeder;
