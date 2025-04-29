@@ -32,7 +32,18 @@ const breadcrumbs: BreadcrumbItem[] = [
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+            <div v-if="!plants.length"><span> У вас нет растений! Хотите добавить?</span></div>
             <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+                <div>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Добавить новое растение</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+
+                        </CardContent>
+                    </Card>
+                </div>
                 <div
                     v-for="plant in plants" :key="plant.id"
                 >

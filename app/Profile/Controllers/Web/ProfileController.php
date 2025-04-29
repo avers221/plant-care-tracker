@@ -3,7 +3,7 @@
 namespace App\Profile\Controllers\Web;
 
 use App\Core\Controllers\Controller;
-use App\Plant\Models\PlantType;
+use App\Profile\Actions\GetPlantsForProfilePageAction;
 use App\Profile\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -14,9 +14,10 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request, GetPlantsForProfilePageAction $action): Response
     {
-        $plants = PlantType::all();
+        $userId = $request->user()->id;
+        $plants = $action->handle($userId);
         return Inertia::render('profile/index', compact('plants'));
     }
     /**
