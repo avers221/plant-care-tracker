@@ -4,8 +4,7 @@ namespace App\PlantsRequirements\Models\Requirements;
 
 use App\PlantsRequirements\Models\CareRequirement;
 use App\PlantsRequirements\Models\Directories\RepottingFrequency;
-use App\PlantsRequirements\Models\Directories\SpecialRepottingRequirements;
-use App\PlantsRequirements\Models\Directories\WateringMethod;
+use App\PlantsRequirements\Models\Directories\SpecialRepottingRequirement;
 use Illuminate\Database\Eloquent\Model;
 
 class RepottingRequirement extends Model
@@ -25,6 +24,6 @@ class RepottingRequirement extends Model
 
     public function specialRepottingRequirements(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(SpecialRepottingRequirements::class, 'special_requirements_id');
+        return $this->belongsTo(SpecialRepottingRequirement::class, 'special_requirements_id');
     }
 }

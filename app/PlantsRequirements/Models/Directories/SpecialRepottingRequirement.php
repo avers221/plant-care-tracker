@@ -5,7 +5,7 @@ namespace App\PlantsRequirements\Models\Directories;
 use App\Core\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
-class SpecialRepottingRequirements extends Model
+class SpecialRepottingRequirement extends Model
 {
     use HasSlug;
 

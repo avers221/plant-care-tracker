@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import TextLink from '@/components/TextLink.vue';
 import { defineProps } from 'vue'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -49,7 +50,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                 >
                     <Card>
                         <CardHeader>
-                            <CardTitle>{{plant.name}}</CardTitle>
+                            <CardTitle>
+                                <TextLink class="line-clamp-none" :href="route('plant.show', {'plantId':plant.id})" :tabindex="5">
+                                    {{plant.name}}
+                                </TextLink>
+                            </CardTitle>
                         </CardHeader>
                         <CardContent>
                             {{plant.description}}

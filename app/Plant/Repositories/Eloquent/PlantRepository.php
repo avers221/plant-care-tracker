@@ -2,18 +2,33 @@
 
 namespace App\Plant\Repositories\Eloquent;
 
+use App\Core\Shared\Collections\PlantEntitiesCollection;
+use App\Plant\Entities\PlantEntity;
 use App\Plant\Models\Plant;
 use App\Plant\Repositories\PlantRepositoryInterface;
 
 class PlantRepository implements PlantRepositoryInterface
 {
-    public function getPlantById(string $id): ?Plant
+    /**
+     * @throws \ReflectionException
+     */
+    public function getPlantById(string $id): ?PlantEntity
     {
-        return Plant::query()->where('id', $id)->first();
+        $model = Plant::query()->where('id', $id)->first();
+
+        // todo: trow exception
+        if(!$model) return null;
+
+        return new PlantEntity($model->toArray());
     }
 
-    public function getUserPlants(int $user_id): array
+    /**
+     * @throws \ReflectionException
+     */
+    public function getUserPlants(int $user_id): PlantEntitiesCollection
     {
-        return Plant::query()->where('user_id', $user_id)->get()->toArray();
+        $entities = Plant::query()->where('user_id', $user_id)->get();
+
+        return new PlantEntitiesCollection(['items' => $entities->toArray()]);
     }
 }

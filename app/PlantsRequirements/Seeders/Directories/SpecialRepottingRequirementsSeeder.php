@@ -2,7 +2,7 @@
 
 namespace App\PlantsRequirements\Seeders\Directories;
 
-use App\PlantsRequirements\Models\Directories\SpecialRepottingRequirements;
+use App\PlantsRequirements\Models\Directories\SpecialRepottingRequirement;
 use Illuminate\Database\Seeder;
 
 class SpecialRepottingRequirementsSeeder extends Seeder
@@ -13,7 +13,7 @@ class SpecialRepottingRequirementsSeeder extends Seeder
     public function run(): void
     {
         foreach ($this->getReasons() as $method){
-            SpecialRepottingRequirements::updateOrCreate(
+            SpecialRepottingRequirement::updateOrCreate(
                 ['name' => $method['name']],
                 $method
             );

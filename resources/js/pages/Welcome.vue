@@ -36,7 +36,7 @@ import { Card, CardContent } from '@/components/ui/card'
         </header>
         <div class="duration-750 starting:opacity-0 flex w-full items-center justify-center opacity-100 transition-opacity lg:grow">
             <main class="flex w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row">
-                <div class="min-h-screen bg-gradient-to-br from-green-50 to-white flex items-center justify-center px-4">
+                <div class="min-h-screen from-green-50 flex items-center justify-center px-4">
                     <Card class="max-w-2xl w-full shadow-xl border-0 rounded-2xl">
                         <CardContent class="p-8">
                             <h1 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">

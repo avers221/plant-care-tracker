@@ -2,6 +2,7 @@
 
 namespace App\Profile\Actions;
 
+use App\Core\Shared\Collections\PlantEntitiesCollection;
 use App\Plant\Repositories\PlantRepositoryInterface;
 
 class GetPlantsForProfilePageAction
@@ -10,7 +11,7 @@ class GetPlantsForProfilePageAction
     {
     }
 
-    public function handle(int $userId): array
+    public function handle(int $userId): PlantEntitiesCollection
     {
         return $this->plantRepositories->getUserPlants($userId);
     }

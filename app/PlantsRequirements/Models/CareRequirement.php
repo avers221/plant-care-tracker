@@ -18,6 +18,9 @@ use Illuminate\Support\Str;
 
 class CareRequirement extends Model
 {
+
+    protected $fillable = ['plant_id'];
+
     public $timestamps = false;
     protected $keyType = 'string';
     public $incrementing = false;

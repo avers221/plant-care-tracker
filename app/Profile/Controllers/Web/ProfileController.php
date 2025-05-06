@@ -18,7 +18,9 @@ class ProfileController extends Controller
     {
         $userId = $request->user()->id;
         $plants = $action->handle($userId);
-        return Inertia::render('profile/index', compact('plants'));
+        $plants = $plants->items;
+
+        return Inertia::render('profile/Index', compact('plants'));
     }
     /**
      * Show the user's profile settings page.
@@ -65,6 +67,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return to_route('home');
     }
 }
